@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="qavs_minus">+/-</string>
+    <string name="foiz">%</string>
+    <string name="boluv">/</string>
+    <string name="kopaytiruv">*</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
+    <string name="teng">=</string>
+    <string name="nol">0</string>
+    <string name="point">.</string>
+</resources>
