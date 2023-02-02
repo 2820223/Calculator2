@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         minus.setOnClickListener { addSimvol(minus.text.toString()) }
         kopaytiruv.setOnClickListener { addSimvol(kopaytiruv.text.toString()) }
         boluv.setOnClickListener { addSimvol(boluv.text.toString()) }
-        teng.setOnClickListener { list() }
+        teng.setOnClickListener { list(operand.text.toString()) }
         qavs_minus.setOnClickListener {manfiySon(operand.text.toString()) }
 
 
@@ -133,10 +133,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    fun list() {
+    fun list(s:String) {
         val list = mutableListOf<Any>()
         var temp = ""
-        for (i in operand.text) {
+        for (i in s) {
             if (i.isDigit() || i.equals(".")) {
                 temp += i
             } else {
@@ -155,40 +155,65 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     fun manfiySon(s: String) {
 
-        val list = mutableListOf<Any>()
-        var temp = ""
-        for (i in operand.text) {
+//        val list = mutableListOf<Any>()
+//        var temp = ""
+//        for (i in operand.text) {
+//            if (i.isDigit() or i.equals(".")) {
+//                temp += i
+//            } else {
+//                list.add(i)
+//                list.add(temp)
+//                temp = ""
+//            }
+//        }
+//        if (temp.isNotEmpty()) {
+//            list.add(temp)
+//        }
+//
+//        Log.d("list", list.toString())
+//        var lastchar = ""
+//        if (isdigit) {
+//            var count = 0
+//            for (i in list[list.size - 1].toString()) {
+//                count++
+//                lastchar = ""
+//                Log.d("last", list[list.size - 1].toString())
+//                for (i in list[list.size - 1].toString()) {
+//                    lastchar += i
+//                }
+//            }
+//            Log.d("lastchar", lastchar)
+//
+//            operand.text = operand.text.dropLast(count)
+//            operand.text = operand.text.toString() + "(-" + lastchar + ")"
+//            Log.d("isdigit", isdigit.toString())
+//
+//        }
+val list1 = mutableListOf<Any>()
+        var temp =""
+        for ( i in s){
             if (i.isDigit() or i.equals(".")) {
-                temp += i
-            } else {
-                list.add(i)
-                list.add(temp)
-                temp = ""
+              temp += i
+
             }
+            else{
+
+                list1.add(temp)
+                list1.add(i)
+                temp = ""
+
+            }
+
         }
         if (temp.isNotEmpty()) {
-            list.add(temp)
+         list1.add(temp)
         }
+      Log.d("list",list1.joinToString())
+val list2 = mutableListOf<Any>()
+for ( j in list1){
 
-        Log.d("list", list.toString())
-        var lastchar = ""
-        if (isdigit) {
-            var count = 0
-            for (i in list[list.size - 1].toString()) {
-                count++
-                lastchar = ""
-                Log.d("last", list[list.size - 1].toString())
-                for (i in list[list.size - 1].toString()) {
-                    lastchar += i
-                }
-            }
-            Log.d("lastchar", lastchar)
+}
 
-            operand.text = operand.text.dropLast(count)
-            operand.text = operand.text.toString() + "(-" + lastchar + ")"
-            Log.d("isdigit", isdigit.toString())
-
-        }
 
     }
 
