@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.text.isDigitsOnly
 import kotlin.math.min
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -82,7 +83,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         kopaytiruv.setOnClickListener { addSimvol(kopaytiruv.text.toString()) }
         boluv.setOnClickListener { addSimvol(boluv.text.toString()) }
         teng.setOnClickListener { list(operand.text.toString()) }
-        qavs_minus.setOnClickListener {manfiySon(operand.text.toString()) }
+        qavs_minus.setOnClickListener {manfiySon(operand.text.length) }
 
 
     }
@@ -153,7 +154,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
 
-    fun manfiySon(s: String) {
+    fun manfiySon(s: Int) {
 
 //        val list = mutableListOf<Any>()
 //        var temp = ""
@@ -189,33 +190,43 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 //            Log.d("isdigit", isdigit.toString())
 //
 //        }
-val list1 = mutableListOf<Any>()
-        var temp =""
-        for ( i in s){
-            if (i.isDigit() or i.equals(".")) {
-              temp += i
+        val list = mutableListOf<Any>()
+        for ( i in operand.text){
+            list.add(i)
+        }
+        var temp = ""
+        for (i in 0.. list.size-1) {
+            if (list[i].toString().isDigitsOnly() or list[i].equals(".")) {
+                temp += i
+            }
+            else if (i.equals("(")){
+                list.remove(i)
 
             }
-            else{
-
-                list1.add(temp)
-                list1.add(i)
-                temp = ""
 
             }
+        Log.d("list", list.toString())
+//        if (temp.isNotEmpty()) {
+//         list1.add(temp)
+//        }
 
-        }
-        if (temp.isNotEmpty()) {
-         list1.add(temp)
-        }
-      Log.d("list",list1.joinToString())
-val list2 = mutableListOf<Any>()
-for ( j in list1){
+//        var lastchar = ""
+//        if (isdigit) {
+//            var count = 0
+//            for (i in list1[list1.size - 1].toString()) {
+//                count++
+//                lastchar = ""
+//                Log.d("last", list1[list1.size - 1].toString())
+//                for (i in list1[list1.size - 1].toString()) {
+//                    lastchar += i
+//                }
+//            }
 
-}
+//            operand.text = operand.text.dropLast(count)
+//            operand.text = operand.text.toString() + "-"+lastchar
+//            Log.d("song",list1.last().toString())
 
-
+//        }
     }
-
     }
 
